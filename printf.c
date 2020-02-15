@@ -6,7 +6,7 @@
 /*   By: krisocam <krisocam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 12:30:57 by krisocam          #+#    #+#             */
-/*   Updated: 2020/02/15 19:37:15 by krisocam         ###   ########.fr       */
+/*   Updated: 2020/02/15 20:14:05 by krisocam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int		handle_format(char **tab, va_list args)
 	}
 	else
 		param.width = get_width(tab);
-	//printf("width %d\n", param.width);
+//	printf("width %d\n", param.width);
 	if (**tab == '.' && (*tab)[1] == '*')
 	{
 		param.size = va_arg(args, int);
@@ -55,7 +55,7 @@ int		handle_format(char **tab, va_list args)
 	}
 	else
 		param.size = get_size(tab);
-	//printf("size %d\n", param.size);
+	printf("size %d\n", param.size);
 	type = **tab;
 	(*tab)++;
 	return (handle_type(type, args, param));
@@ -67,5 +67,7 @@ int		handle_type(char type, va_list args, t_param param)
 		return (get_char(va_arg(args, int), param));
 	else if (type == 's')
 		return (get_str(va_arg(args, char*), param));
+	else if (type == 'd' || type == 'i')
+		return (get_int(va_arg(args, long int), param));
 	return (0);
 }

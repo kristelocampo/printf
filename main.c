@@ -2,6 +2,17 @@
 
 int main()
 {
+
+	ft_printf("hello %----*.d this is a test\n", -2, 0);
+	printf("hello %----*.d this is a test\n", -2, 0);
+	ft_printf("%50d\n", 78900);
+	printf("%50d\n", 78900);
+	ft_printf("%-5d\n", 0);
+	printf("%-5d\n", 0);
+	ft_printf("%.4i\n", -2147483648);
+	printf("%.4li\n", -2147483648);
+	ft_printf("%05i\n", 2147483647);
+	printf("%05i\n", 2147483647);
 //	ft_printf("hello\n");
 /**	ft_printf("hello ca%----4c %1c%10c%-c ??\n", '\0', '\n', (char)56, 0);
 	printf("hello ca%----4c %1c%10c%-c ??\n", '\0', '\n', (char)56, 0);
@@ -9,7 +20,7 @@ int main()
 	printf("%-12c\n", '\n');
 	ft_printf("%-1c\n", 12);
 	printf("%-1c\n", 12);**/
-	printf("%1.4s\net %-6.8s\net %4.2s\n", "tuuu", "12345", "hu");
+/**	printf("%1.4s\net %-6.8s\net %4.2s\n", "tuuu", "12345", "hu");
 	ft_printf("%1.4s\net %-6.8s\net %4.2s\n", "tuuu", "12345", "hu");
 	printf("u%4.2ss\n %-1.s\n %---5.3s\n", "coco", NULL, "yooo");
 	ft_printf("u%4.2ss\n %-1.s\n %---5.3s\n", "coco", NULL, "yooo");
@@ -18,7 +29,7 @@ int main()
 	printf("%-2s\n", "");
 	ft_printf("%-2s\n", "");
 	printf("%1s\n", "hi");
-	ft_printf("%1s\n", "hi");
+	ft_printf("%1s\n", "hi");**/
 /**	ft_printf("%-c\n", 'a');
 	printf("%-c\n", 'a');
 	ft_printf("%-5c\n", 'a');

@@ -6,7 +6,7 @@
 /*   By: krisocam <krisocam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 14:47:08 by krisocam          #+#    #+#             */
-/*   Updated: 2020/02/15 19:43:26 by krisocam         ###   ########.fr       */
+/*   Updated: 2020/02/15 20:11:35 by krisocam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,34 @@ long int	get_str(char *str, t_param param)
 	if ((param.zero || param.width < 0) && i > 0)
 		putcharn((param.zero ? '0' : ' '), i);
 	return (i + len);
+}
+
+long int	get_int(long nb, t_param param)
+{
+	char		*tmp;
+	int			space;
+	int			zero;
+	long int	i;
+	long int	j;
+
+	space = 0;
+	zero = 0;
+	j = (nb < 0 ? 1 : 0);
+	if (nb == 0 && param.size == 0)
+		tmp = ft_calloc(1, sizeof(char));
+	else
+		tmp = ft_itoa(nb);
+	i = ft_strlen(tmp);
+	if (i >= 0 && param.size > (int)i)
+		zero = param.size - i;
+	else if (param.zero && param.width > (int)i + j && param.size < 0)
+		zero = param.width - i - j;
+	if (param.width > zero + (int)i + j)
+		space = param.width - (zero + i + j);
+	putcharn(' ', ((!param.minus && param.width >= 0) ? space : 0));
+	putcharn('0', zero);
+	ft_putstr_fd(tmp, 1);
+	putcharn(' ', ((param.minus || param.width < 0) ? space : 0));
+	free(tmp);
+	return (i + space + zero + (nb < 0));
 }

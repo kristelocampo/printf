@@ -6,7 +6,7 @@
 /*   By: krisocam <krisocam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 12:30:59 by krisocam          #+#    #+#             */
-/*   Updated: 2020/02/15 19:29:41 by krisocam         ###   ########.fr       */
+/*   Updated: 2020/02/15 20:03:59 by krisocam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int				get_size(char **tab);
 
 long int		get_char(char c, t_param param);
 long int		get_str(char *str, t_param param);
-
+long int		get_int(long nb, t_param param);
 
 void			init(t_param *param);
 void			putcharn(char ch, int size);
