@@ -6,7 +6,7 @@
 /*   By: krisocam <krisocam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 12:30:57 by krisocam          #+#    #+#             */
-/*   Updated: 2020/02/15 18:19:09 by krisocam         ###   ########.fr       */
+/*   Updated: 2020/02/15 19:37:15 by krisocam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int		ft_printf(const char *format, ...)
 	int			len;
 
 	len = 0;
-	va_start(args, format);
 	tab = (char *)format;
+	va_start(args, format);
 	while (*tab)
 	{
 		if (*tab != '%' && ++len)
@@ -37,14 +37,25 @@ int		handle_format(char **tab, va_list args)
 	t_param param;
 	char	type;
 	
+	(*tab)++;
 	init(&param);
-	(*tab)++;
 	get_flag(tab, &param);
-	param.width = get_width(tab, args);
+	if (**tab == '*')
+	{
+		param.width = va_arg(args, int);
+		(*tab)++;
+	}
+	else
+		param.width = get_width(tab);
 	//printf("width %d\n", param.width);
-	param.size = get_size(tab, args);
+	if (**tab == '.' && (*tab)[1] == '*')
+	{
+		param.size = va_arg(args, int);
+		(*tab) += 2;
+	}
+	else
+		param.size = get_size(tab);
 	//printf("size %d\n", param.size);
-	(*tab)++;
 	type = **tab;
 	(*tab)++;
 	return (handle_type(type, args, param));
@@ -54,5 +65,7 @@ int		handle_type(char type, va_list args, t_param param)
 {
 	if (type == 'c')
 		return (get_char(va_arg(args, int), param));
+	else if (type == 's')
+		return (get_str(va_arg(args, char*), param));
 	return (0);
 }

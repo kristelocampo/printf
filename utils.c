@@ -6,7 +6,7 @@
 /*   By: krisocam <krisocam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 15:55:45 by krisocam          #+#    #+#             */
-/*   Updated: 2020/02/15 17:44:20 by krisocam         ###   ########.fr       */
+/*   Updated: 2020/02/15 19:13:05 by krisocam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,25 @@ void	putcharn(char ch, int size)
 		return ;
 	while (size--)
 		ft_putchar_fd(ch, 1);
+}
+
+long int	ft_abs(long int a)
+{
+	if (a < 0)
+		return (-a);
+	return (a);
+}
+
+long int	ft_min(long int a, long int b)
+{
+	if (a < b)
+		return (a);
+	return (b);
+}
+
+long int	ft_max(long int a, long int b)
+{
+	if (a < b)
+		return (b);
+	return (a);
 }

@@ -5,50 +5,64 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: krisocam <krisocam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/06 12:51:37 by krisocam          #+#    #+#             */
-/*   Updated: 2020/02/15 19:31:43 by krisocam         ###   ########.fr       */
+/*   Created: 2019/11/05 09:18:12 by tmarx             #+#    #+#             */
+/*   Updated: 2020/02/15 18:37:00 by krisocam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include "printf.h"
 
-void	get_flag(char **tab, t_param *param)
+int		count_stars(char *str)
 {
-	while (**tab == '-' || **tab == '0')
+	int i;
+	int count;
+
+	i = 0;
+	count = 0;
+	str++;
+	while (str[i] && !is_type(str[i]))
+		count += (str[i++] == '*');
+	return (count);
+}
+
+void	get_flags(char **ptr, int flags[2])
+{
+	flags[0] = 0;
+	flags[1] = 0;
+	while (isflag(**ptr))
 	{
-		if (**tab == '-')
-			param->minus = 1;
-		else if (**tab == '0' && param->minus == 0)
-			param->zero = 1;
-		(*tab)++;
+		if (**ptr == '-')
+			flags[0] = 1;
+		if (**ptr == '0')
+			flags[1] = 1;
+		(*ptr)++;
 	}
 }
 
-int		get_width(char **tab)
+int		get_width(char **ptr)
 {
-	int i;
+	int w;
 
-	i = 0;
-	if (!ft_isdigit(**tab))
+	if (!ft_isdigit(**ptr))
 		return (0);
-	i = ft_atoi(*tab);
-	while (ft_isdigit(**tab))
-		(*tab)++;
-	return (i);
+	w = ft_atoi(*ptr);
+	while (ft_isdigit(**ptr))
+		(*ptr)++;
+	return (w);
 }
 
-int		get_size(char **tab)
+int		get_size(char **ptr)
 {
-	int i;
+	int s;
 
-	i = 0;
-	if (**tab == '.')
+	if (**ptr == '.')
 	{
-		(*tab)++;
-		i = ft_atoi(*tab);
-		while (ft_isdigit(**tab))
-			(*tab)++;
-		return (i);
+		(*ptr)++;
+		s = ft_atoi(*ptr);
+		while (ft_isdigit(**ptr))
+			(*ptr)++;
+		return (s);
 	}
 	else
 		return (-1);
