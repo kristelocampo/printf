@@ -1,31 +1,41 @@
-NAME	= libftprintf.a
+NAME = libftprintf.a
 
-SRC		= printf.c parsing.c handle_type.c handle_type2.c utils.c
-OBJS	= printf.o parsing.o handle_type.o handle_type2.o utils.o
+SRC = printf.c parsing.c handle_type.c handle_type2.c utils.c
 
-cc		= gcc
-RM		= rm -rf
-HEADERS	= include
-CFLAGS	= -Wall -Werror -Wextra
+PATHSRCS = srcs
 
-all:	${NAME}
+PATHOBJ = obj
 
-$(NAME):	${OBJS}
-			ar rcs ${NAME} ${OBJS}
-			
-%.c%.o:
-			${CC} ${CFLAGS} -I${HEADERS} -c $< -o ${<:.c=.o}
+HEADERS	= ./srcs
+
+FLAGS = -Wall -Wextra -Werror
+
+SRCS = $(addprefix $(PATHSRCS)/,$(SRC))
+OBJS = $(addprefix $(PATHOBJ)/,$(SRC:.c=.o))
+
+all: $(NAME)
+
+$(NAME): $(OBJS)
+	@(make -C libft/)
+	@(cp libft/libft.a ./$(NAME))
+	@(ar rc $(NAME) $(OBJS))
+	@(ranlib $(NAME))
+
+$(PATHOBJ)/%.o: $(PATHSRCS)/%.c
+	@(mkdir -p obj)
+	@(gcc $(FLAGS) -I $(HEADERS) -o $@ -c $<)
 
 clean:
-	@echo "CLEAN"
+	@echo "Clean"
 	@(make clean -C ./libft/)
-	@(rm -rf ${OBJS})
+	@(rm -rf $(PATHOBJ))
+	@(rm -rf $(SRCS:.c=.o))
 
 fclean:	clean
-	@echo "FCLEAN"
+	@echo "Fclean"
 	@(make fclean -C ./libft/)
-	@(rm -rf ${NAME})
+	@(rm -rf $(NAME))
 
-re:		fclean all
+re:	fclean all
 
 .PHONY:	all clean fclean re

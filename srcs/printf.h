@@ -6,7 +6,7 @@
 /*   By: krisocam <krisocam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 12:30:59 by krisocam          #+#    #+#             */
-/*   Updated: 2020/02/17 19:35:08 by krisocam         ###   ########.fr       */
+/*   Updated: 2020/02/18 19:10:18 by krisocam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdarg.h>
 # include <stdlib.h>
 # include <stdio.h>
-# include "libft/libft.h"
+# include "../libft/libft.h"
 
 typedef struct	s_param
 {

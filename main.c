@@ -1,9 +1,9 @@
-#include "printf.h"
+#include "srcs/printf.h"
 
 int main()
 {
 
-	ft_printf("------------integer-------------- \n");
+/**	ft_printf("------------integer-------------- \n");
 	ft_printf("hello %----*.d this is a test\n", -2, 0);
 	printf("hello %----*.d this is a test\n", -2, 0);
 	ft_printf("%50d\n", 78900);
@@ -64,32 +64,25 @@ int main()
 	ft_printf("%p\n", NULL);
 	printf("%p\n", NULL);
 	ft_printf("%20p\n", &get_hex);
-	printf("%20p\n", &get_hex);
+	printf("%20p\n", &get_hex);**/
 
-/**	ft_printf("%-c\n", 'a');
-	printf("%-c\n", 'a');
-	ft_printf("%-5c\n", 'a');
-	ft_printf("%-*c\n", 5, 'a');
-	ft_printf("%05c\n", 'a');
-	ft_printf("%0c*\n",4, 'a');
-	ft_printf("%*c\n",1, 'a');
-	ft_printf("%-5c\n", 'a');
-	ft_printf("%-*c\n", 5, 'a');
-	ft_printf("%05c\n", 'a');
-	ft_printf("%0*c\n",4, 'a');**/
-/**	ft_printf("%c\n", 'A');
-	ft_printf("%%\n");
-	ft_printf("%s\n", "how are you");
-	ft_printf("%d\n", 0);
-	ft_printf("%i\n", -2147483648);
-	ft_printf("%x\n", 12348);
-	ft_printf("%X\n", 12348);
-	ft_printf("%u\n", -214748);
-	printf("%u\n", -214748);
-	ft_printf("%p\n", NULL);
-	printf("%p\n", NULL);
-	ft_printf("%p\n", &init);
-	printf("%p\n", &init);
-	ft_printf("%-5.5d\n", 0);
-	ft_printf("%*.*i\n",5,5, -2147483648);**/
+	ft_printf("-------------erruer------------ \n\n");
+/**	ft_printf("test%-8p %---32p %5.3x%024X\n", &ft_max, &printf, 0x25, 0);
+	printf("test%-8p %---32p %5.3x%024X\n", &ft_max, &printf, 0x25, 0);
+	ft_printf("test %-7d%007d%-10.2s!!\n", 0xd777, 0x45, "S");
+	printf("test %-7d%007d%-10.2s!!\n", 0xd777, 0x45, "S");
+	ft_printf("%-8s\n", "coco");
+	printf("%-8s\n", "coco");
+	ft_printf("%*.23d\n", -25, 25);
+	printf("%*.23d\n", -25, 25);
+	ft_printf("%-*.0d\n", -117, 0x11ff);
+	printf("%-*.0d\n", -117, 0x11ff);
+	ft_printf("%.5d\n", -421);
+	printf("%.5d\n", -421);
+	ft_printf("%08i\n", -71);
+	printf("%08i\n", -71);**/
+	ft_printf("%.i\n", 44);
+	printf("%.i\n", 44);
+	ft_printf("%08i\n", -71);
+	printf("%08i\n", -71);
 }
