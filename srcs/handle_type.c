@@ -6,7 +6,7 @@
 /*   By: krisocam <krisocam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 14:47:08 by krisocam          #+#    #+#             */
-/*   Updated: 2020/02/18 20:57:58 by krisocam         ###   ########.fr       */
+/*   Updated: 2020/02/24 16:25:37 by krisocam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,22 +53,16 @@ long int	get_str(char *str, t_param param)
 	return (i + len);
 }
 
-long int	get_int(long nb, t_param param)
+long int	get_int(long int nb, t_param param)
 {
 	char		*tmp;
 	int			space;
 	int			zero;
-	long int	nbr;
 	long int	i;
 	int			j;
 
 	if (nb == 0 && param.size == 0)
 		tmp = ft_calloc(1, sizeof(char));
-	if (nb < 0)
-	{
-		nbr = -nb;
-		tmp = ft_itoa(nbr);
-	}
 	else
 		tmp = ft_itoa(ft_abs(nb));
 	j = (nb < 0 ? 1 : 0);
@@ -82,12 +76,42 @@ long int	get_int(long nb, t_param param)
 		space = ft_abs(param.width) - (zero + i + j);
 	if (!param.minus && param.width >= 0)
 		putcharn(' ', space);
-	//putcharn('-', (nb < 0));
+	putcharn('-', (nb < 0));
 	putcharn('0', zero);
 	ft_putstr_fd(tmp, 1);
 	if (param.minus || param.width < 0)
-	putcharn(' ', space);
+		putcharn(' ', space);
 	free(tmp);
 	return (i + zero + space + (nb < 0));
 }
 
+long int	get_unsigned(long int nb, t_param param)
+{
+	char	*tmp;
+	int		zero;
+	int		space;
+	long int i;
+
+	if (nb == 0 && param.size == 0)
+		tmp = ft_calloc(1, sizeof(char));
+	else
+		tmp = convert(nb, "0123456789");
+	i = ft_strlen(tmp);
+	zero = 0;
+	space = 0;
+	if (i >= 0 && param.size > (int)i)
+		zero = param.size - i;
+	if (param.zero && param.width > (int)i && param.size < 0)
+		zero = ft_abs(param.width) - i;
+	if (ft_abs(param.width) > zero + (int)i)
+		space = ft_abs(param.width) - (zero + i);
+	if (!param.minus && param.width >= 0)
+		putcharn(' ', space);
+	putcharn('-', (nb < 0));
+	putcharn('0', zero);
+	ft_putstr_fd(tmp, 1);
+	if (param.minus || param.width < 0)
+		putcharn(' ', space);
+	free(tmp);
+	return (i + zero + space);
+}

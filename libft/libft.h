@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: krisocam <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: krisocam <krisocam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 12:26:07 by krisocam          #+#    #+#             */
-/*   Updated: 2019/11/19 13:25:31 by krisocam         ###   ########.fr       */
+/*   Updated: 2020/02/24 13:27:34 by krisocam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char			*ft_strncpy(char *dest, const char *src, unsigned int n);
 char			*ft_strnstr(const char *str, const char *to_find, size_t len);
 char			*ft_strrchr(const char *str, int c);
 char			*ft_strrev(char *str);
-char			*ft_itoa(int n);
+char			*ft_itoa(long int n);
 char			**ft_split(char const *str, char ch);
 char			*ft_strchr(const char *str, int c);
 char			*ft_substr(char const *str, unsigned int start, size_t len);

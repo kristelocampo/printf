@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: krisocam <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: krisocam <krisocam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 16:44:37 by krisocam          #+#    #+#             */
-/*   Updated: 2019/11/13 10:04:00 by krisocam         ###   ########.fr       */
+/*   Updated: 2020/02/24 14:47:48 by krisocam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static char		*calc(int n, int sign)
 	return (dest);
 }
 
-char			*ft_itoa(int n)
+char			*ft_itoa(long int n)
 {
 	int		sign;
 

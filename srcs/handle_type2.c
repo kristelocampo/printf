@@ -6,7 +6,7 @@
 /*   By: krisocam <krisocam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 15:35:41 by krisocam          #+#    #+#             */
-/*   Updated: 2020/02/17 19:29:56 by krisocam         ###   ########.fr       */
+/*   Updated: 2020/02/24 15:54:44 by krisocam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,10 @@ long int    get_hex(long int nb, t_param param, char *base)
     space = 0;
     if (ft_abs(param.size) > i && param.size > 0)
         zero = ft_abs(param.size) - i;
-    if (param.zero && param.width > param.size && param.size < 0)
+    if (param.zero && ft_abs(param.width) > param.size && param.size < 0)
         zero = ft_abs(param.width) - i;
-    if (param.width > zero + (int)i)
-        space = ft_abs(param.width) - (i - zero);
+    if (ft_abs(param.width) > zero + (int)i)
+        space = ft_abs(param.width) - (i + zero);
     else
         space = 0;
     if (param.size < 0 && param.width < 0)
@@ -65,7 +65,7 @@ long int    get_hex(long int nb, t_param param, char *base)
     putcharn(' ', ((!param.minus && param.width >= 0) ? space : 0));
     putcharn('0', ((param.width > 0 || param.size > 0) ? zero : 0));
     ft_putstr_fd(tmp, 1);
-    putcharn(' ', ((param.minus || param.width < 0) ? space : 0));
+    putcharn(' ', ((param.minus || ft_abs(param.width) < 0) ? space : 0));
     free (tmp);
     return (i + (zero > 0 ? zero : 0) + (space > 0 ? space : 0));
 }

@@ -85,4 +85,14 @@ int main()
 	printf("%.i\n", 44);
 	ft_printf("%08i\n", -71);
 	printf("%08i\n", -71);
+	ft_printf("%.5d\n", -421);
+	printf("%.5d\n", -421);
+	ft_printf("%*.u\n", -20, 12220);
+	printf("%*.u\n", -20, 12220);
+	ft_printf("%*.u\n",-6, 12220);
+	printf("%*.u\n",-6, 12220);
+	ft_printf("%-12u\n", 17894);
+	printf("%-12u\n", 17894);
+
+
 }

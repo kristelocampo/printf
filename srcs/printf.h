@@ -6,7 +6,7 @@
 /*   By: krisocam <krisocam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 12:30:59 by krisocam          #+#    #+#             */
-/*   Updated: 2020/02/18 19:10:18 by krisocam         ###   ########.fr       */
+/*   Updated: 2020/02/24 16:25:09 by krisocam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,10 @@ int				get_size(char **tab);
 
 long int		get_char(char c, t_param param);
 long int		get_str(char *str, t_param param);
-long int		get_int(long nb, t_param param);
+long int		get_int(long int nb, t_param param);
 long int    	get_hex(long int nb, t_param param, char *base);
 long int   		get_ptr(void *ptr, t_param param);
+long int		get_unsigned(long int nb, t_param param);
 char    		*convert(long int nb, char *base);
 
 void			init(t_param *param);
