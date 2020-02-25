@@ -1,7 +1,8 @@
 #include "srcs/printf.h"
-
+#include <limits.h>
 int main()
 {
+	int ret;
 
 /**	ft_printf("------------integer-------------- \n");
 	ft_printf("hello %----*.d this is a test\n", -2, 0);
@@ -80,7 +81,7 @@ int main()
 	ft_printf("%.5d\n", -421);
 	printf("%.5d\n", -421);
 	ft_printf("%08i\n", -71);
-	printf("%08i\n", -71);**/
+	printf("%08i\n", -71);
 	ft_printf("%.i\n", 44);
 	printf("%.i\n", 44);
 	ft_printf("%08i\n", -71);
@@ -93,6 +94,36 @@ int main()
 	printf("%*.u\n",-6, 12220);
 	ft_printf("%-12u\n", 17894);
 	printf("%-12u\n", 17894);
-
-
+	ft_printf("%i\n", INT_MIN);
+	printf("%i\n", INT_MIN);
+	ft_printf("%i\n", INT_MAX + 1);
+	printf("%i\n", INT_MAX + 1);
+	ft_printf("%p\n", 0);
+	printf("%p\n", 0);
+	ft_printf("%2p\n", NULL);
+	printf("%2p\n", NULL);
+	ft_printf("%2.9p\n", 1234);
+	printf("%2.9p\n", 1234);
+	ft_printf("%2.5p\n", 0);
+	printf("%2.5p\n", 0);
+	ft_printf("%.0p\n", 0);
+	printf("%.0p\n", 0);**/
+	printf("REAL6D3%i%0d%*sD%-10.2ua97l%%EHObs%016.3x\n", 2147483647, -2147483647, -6, "", 882416706, 0);
+	ft_printf("FTPF6D3%i%0d%*sD%-10.2ua97l%%EHObs%016.3x\n", 2147483647, -2147483647, -6, "", 882416706, 0);
+	printf("REAL6D3%-10.2ua97l%%EHObs%016.3x\n", 882416706, 0);
+	ft_printf("FTPF6D3%-10.2ua97l%%EHObs%016.3x\n", 882416706, 0);
+	printf("REAL%-1x%0u%-.1xGV%013dwGJI%03.*xQYz\n", -901058871, -2147483647, -2147483647, -2147483647, -8, 0);
+	ft_printf("FTPF%-1x%0u%-.1xGV%013dwGJI%03.*xQYz\n", -901058871, -2147483647, -2147483647, -2147483647, -8, 0);
+	printf("REAL%013dwGJI%03.*xQYz\n", -2147483647, -8, 0);
+	ft_printf("FTPF%013dwGJI%03.*xQYz\n", -2147483647, -8, 0);
+	printf("REAL%0*.*d%0*XVN6O%7c\n", -10, -2, 0, 10, 2147483647, 'l');
+	ft_printf("FTPF%0*.*d%0*XVN6O%7c\n", -10, -2, 0, 10, 2147483647, 'l');
+	printf("REAL%.1X\n",  -2147483647);
+	ft_printf("FTPF%.1X\n",  -2147483647);
+	printf("xHKrYx%*.4i%0uGuWnUV42au%.*d%0*.2X\n", 8, -842573287, -2147483647, -3, 0, -10, 0);
+	ft_printf("xHKrYx%*.4i%0uGuWnUV42au%.*d%0*.2X\n", 8, -842573287, -2147483647, -3, 0, -10, 0);
+	printf("VtRy4hJhYe%0*.*x%xLqcJn%-12d%1.3xtxQ\n", 8, -3, -2147483647, 0, -2147483647, 2147483647);
+	ft_printf("VtRy4hJhYe%0*.*x%xLqcJn%-12d%1.3xtxQ\n", 8, -3, -2147483647, 0, -2147483647, 2147483647);
+	printf("xHKrYx%*.4i%0uGuWnUV42au%.*d%0*.2X\n", 8, -842573287, -2147483647, -3, 0, -10, 0);
+	ft_printf("xHKrYx%*.4i%0uGuWnUV42au%.*d%0*.2X\n", 8, -842573287, -2147483647, -3, 0, -10, 0);
 }

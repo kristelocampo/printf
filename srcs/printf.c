@@ -6,7 +6,7 @@
 /*   By: krisocam <krisocam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 12:30:57 by krisocam          #+#    #+#             */
-/*   Updated: 2020/02/24 16:25:27 by krisocam         ###   ########.fr       */
+/*   Updated: 2020/02/25 16:37:14 by krisocam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ int		ft_printf(const char *format, ...)
 
 int		handle_format(char **tab, va_list args)
 {
-	t_param param;
-	char	type;
-	
+	t_param		param;
+	char		type;
+
 	(*tab)++;
 	init(&param);
 	get_flag(tab, &param);
@@ -56,7 +56,9 @@ int		handle_format(char **tab, va_list args)
 		param.size = get_size(tab);
 	type = **tab;
 	(*tab)++;
-	return (handle_type(type, args, param));
+	if (ft_strchr(SYMBOL, type))
+		return (handle_type(type, args, param));
+	return (-1);
 }
 
 int		handle_type(char type, va_list args, t_param param)

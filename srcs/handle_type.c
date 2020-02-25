@@ -6,7 +6,7 @@
 /*   By: krisocam <krisocam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 14:47:08 by krisocam          #+#    #+#             */
-/*   Updated: 2020/02/24 16:25:37 by krisocam         ###   ########.fr       */
+/*   Updated: 2020/02/25 19:56:57 by krisocam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ long int		get_char(char c, t_param param)
 	int i;
 
 	i = 0;
-	if (param.width > 0)
-		i = param.width - 1;
+	if (param.width != 0)
+		i = ft_abs(param.width) - 1;
 	if (!param.minus && param.width > 0)
 		putcharn((param.zero ? '0' : ' '), i);
 	ft_putchar_fd(c, 1);
@@ -27,7 +27,7 @@ long int		get_char(char c, t_param param)
 	return (i + 1);
 }
 
-long int	get_str(char *str, t_param param)
+long int		get_str(char *str, t_param param)
 {
 	long int len;
 	long int i;
@@ -53,7 +53,7 @@ long int	get_str(char *str, t_param param)
 	return (i + len);
 }
 
-long int	get_int(long int nb, t_param param)
+long int		get_int(long int nb, t_param param)
 {
 	char		*tmp;
 	int			space;
@@ -61,10 +61,8 @@ long int	get_int(long int nb, t_param param)
 	long int	i;
 	int			j;
 
-	if (nb == 0 && param.size == 0)
-		tmp = ft_calloc(1, sizeof(char));
-	else
-		tmp = ft_itoa(ft_abs(nb));
+	tmp = ((nb == 0 && param.size == 0 ?
+	ft_calloc(1, sizeof(char)) : convert(ft_abs(nb), "0123456789")));
 	j = (nb < 0 ? 1 : 0);
 	zero = 0;
 	space = 0;
@@ -74,44 +72,37 @@ long int	get_int(long int nb, t_param param)
 		zero = ft_abs(param.width) - i - j;
 	if (ft_abs(param.width) > zero + (int)i + j)
 		space = ft_abs(param.width) - (zero + i + j);
-	if (!param.minus && param.width >= 0)
-		putcharn(' ', space);
+	putcharn(' ', (!param.minus && param.width >= 0 ? space : 0));
 	putcharn('-', (nb < 0));
 	putcharn('0', zero);
 	ft_putstr_fd(tmp, 1);
-	if (param.minus || param.width < 0)
-		putcharn(' ', space);
+	putcharn(' ', (param.minus || param.width < 0 ? space : 0));
 	free(tmp);
 	return (i + zero + space + (nb < 0));
 }
 
-long int	get_unsigned(long int nb, t_param param)
+long int		get_unsigned(long int nb, t_param param)
 {
-	char	*tmp;
-	int		zero;
-	int		space;
-	long int i;
+	char		*tmp;
+	int			zero;
+	int			space;
+	long int	i;
 
-	if (nb == 0 && param.size == 0)
-		tmp = ft_calloc(1, sizeof(char));
-	else
-		tmp = convert(nb, "0123456789");
-	i = ft_strlen(tmp);
+	tmp = ((nb == 0 && param.size == 0 ?
+	ft_calloc(1, sizeof(char)) : convert(ft_abs(nb), "0123456789")));
 	zero = 0;
 	space = 0;
-	if (i >= 0 && param.size > (int)i)
+	if ((i = ft_strlen(tmp)) >= 0 && param.size > (int)i)
 		zero = param.size - i;
 	if (param.zero && param.width > (int)i && param.size < 0)
 		zero = ft_abs(param.width) - i;
 	if (ft_abs(param.width) > zero + (int)i)
 		space = ft_abs(param.width) - (zero + i);
-	if (!param.minus && param.width >= 0)
-		putcharn(' ', space);
+	putcharn(' ', (!param.minus && param.width >= 0 ? space : 0));
 	putcharn('-', (nb < 0));
 	putcharn('0', zero);
 	ft_putstr_fd(tmp, 1);
-	if (param.minus || param.width < 0)
-		putcharn(' ', space);
+	putcharn(' ', (param.minus || param.width < 0 ? space : 0));
 	free(tmp);
 	return (i + zero + space);
 }

@@ -6,13 +6,13 @@
 /*   By: krisocam <krisocam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 15:55:45 by krisocam          #+#    #+#             */
-/*   Updated: 2020/02/24 14:44:44 by krisocam         ###   ########.fr       */
+/*   Updated: 2020/02/25 16:39:16 by krisocam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-void	init(t_param *param)
+void		init(t_param *param)
 {
 	param->width = 0;
 	param->size = 0;
@@ -20,7 +20,7 @@ void	init(t_param *param)
 	param->minus = 0;
 }
 
-void	putcharn(char ch, int size)
+void		putcharn(char ch, int size)
 {
 	if (size <= 0)
 		return ;

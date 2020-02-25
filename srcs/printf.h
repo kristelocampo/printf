@@ -6,7 +6,7 @@
 /*   By: krisocam <krisocam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 12:30:59 by krisocam          #+#    #+#             */
-/*   Updated: 2020/02/24 16:25:09 by krisocam         ###   ########.fr       */
+/*   Updated: 2020/02/25 19:54:38 by krisocam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include "../libft/libft.h"
+# define SYMBOL "csdiupxX%"
 
 typedef struct	s_param
 {
@@ -37,11 +38,14 @@ int				get_size(char **tab);
 long int		get_char(char c, t_param param);
 long int		get_str(char *str, t_param param);
 long int		get_int(long int nb, t_param param);
-long int    	get_hex(long int nb, t_param param, char *base);
-long int   		get_ptr(void *ptr, t_param param);
+long int		print_int(char *tmp, long int nb, int space,
+int zero, t_param param);
+long int		get_hex(long int nb, t_param param, char *base);
+long int		get_ptr(void *ptr, t_param param);
 long int		get_unsigned(long int nb, t_param param);
-char    		*convert(long int nb, char *base);
+char			*convert(long int nb, char *base);
 
+void			p_hex(int zero, int space, char *tmp, t_param param);
 void			init(t_param *param);
 void			putcharn(char ch, int size);
 long int		ft_abs(long int a);
