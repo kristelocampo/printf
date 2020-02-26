@@ -6,7 +6,7 @@
 /*   By: krisocam <krisocam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 15:35:41 by krisocam          #+#    #+#             */
-/*   Updated: 2020/02/25 20:44:47 by krisocam         ###   ########.fr       */
+/*   Updated: 2020/02/26 14:44:51 by krisocam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ long int	get_hex(long int nb, t_param param, char *base)
 	int			space;
 	long int	i;
 
+	nb = (nb < 0 ? 4294967296 + nb : nb);
 	tmp = ((nb == 0 && param.size == 0 ?
 				ft_calloc(1, sizeof(char)) : convert(nb, base)));
 	i = ft_strlen(tmp);

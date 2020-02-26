@@ -6,7 +6,7 @@
 /*   By: krisocam <krisocam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 12:30:57 by krisocam          #+#    #+#             */
-/*   Updated: 2020/02/25 16:37:14 by krisocam         ###   ########.fr       */
+/*   Updated: 2020/02/26 13:45:39 by krisocam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ int		handle_type(char type, va_list args, t_param param)
 	else if (type == 'd' || type == 'i')
 		return (get_int(va_arg(args, int), param));
 	else if (type == 'x')
-		return (get_hex(va_arg(args, long int), param, "0123456789abcdef"));
+		return (get_hex(va_arg(args, int), param, "0123456789abcdef"));
 	else if (type == 'X')
-		return (get_hex(va_arg(args, long int), param, "0123456789ABCDEF"));
+		return (get_hex(va_arg(args, int), param, "0123456789ABCDEF"));
 	else if (type == 'u')
 		return (get_unsigned(va_arg(args, unsigned int), param));
 	else if (type == 'p')

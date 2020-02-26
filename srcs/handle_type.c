@@ -6,7 +6,7 @@
 /*   By: krisocam <krisocam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/06 14:47:08 by krisocam          #+#    #+#             */
-/*   Updated: 2020/02/25 19:56:57 by krisocam         ###   ########.fr       */
+/*   Updated: 2020/02/26 15:55:10 by krisocam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ long int		get_str(char *str, t_param param)
 	j = 0;
 	while (j < len)
 		ft_putchar_fd(str[j++], 1);
-	j = 0;
 	if ((param.minus || param.width < 0) && i > 0)
 		putcharn((param.zero ? '0' : ' '), i);
 	return (i + len);
@@ -99,7 +98,6 @@ long int		get_unsigned(long int nb, t_param param)
 	if (ft_abs(param.width) > zero + (int)i)
 		space = ft_abs(param.width) - (zero + i);
 	putcharn(' ', (!param.minus && param.width >= 0 ? space : 0));
-	putcharn('-', (nb < 0));
 	putcharn('0', zero);
 	ft_putstr_fd(tmp, 1);
 	putcharn(' ', (param.minus || param.width < 0 ? space : 0));
